@@ -1,8 +1,11 @@
 // Your code goes here
-const btn = document.querySelector('.btn');
-btn.addEventListener('mouseover', function(){
-    btn.style.backgroundColor = 'green';
-})
+const btn = document.querySelectorAll('.btn');
+for (let i = 0; i < 3; i++){
+    btn[i].addEventListener('mouseover', function(){
+        btn[i].style.backgroundColor = 'green';
+    })
+}
+const homeA = document.querySelector('nav a');
 
 const logo = document.querySelector('.logo-heading');
 logo.addEventListener('keydown', (e) => {
@@ -30,18 +33,33 @@ document.body.addEventListener('resize', () => {
 // .addEventListener('scroll', () => {
 
 // })
-document.querySelector('.intro').prepend('<input type="text" placeholder="Type in your name"/>')
-.addEventListener('select', () => {
-    
-})
+document.querySelector('header').addEventListener('click', () => {
+    document.querySelector('header').style.color = 'green';
 
+})
 
 const letsGo = document.querySelector('.content-section h2');
 letsGo.addEventListener('dbclick', () => {
     letsGo.style.color = 'green';
 })
 
-const navbar = document.querySelector('.nav a')
+const navbar = document.querySelectorAll('.nav a')
 navbar.addEventListener('click', function(event){
     event.preventDefault();
 })
+
+
+/// drag and drop
+function allowDrop(ev) {
+    ev.preventDefault();
+  }
+  
+  function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+  }
+  
+  function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+  }
