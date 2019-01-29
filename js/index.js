@@ -44,22 +44,27 @@ letsGo.addEventListener('dbclick', () => {
 })
 
 const navbar = document.querySelectorAll('.nav a')
-navbar.addEventListener('click', function(event){
-    event.preventDefault();
-})
+for (let i = 0; i < 4; i++){
+    navbar[i].addEventListener('click', (ev) => {
+        ev.preventDefault();
+    })
+}
 
 
 /// drag and drop
 function allowDrop(ev) {
     ev.preventDefault();
+    ev.stopPropagation();
   }
   
   function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
+    ev.stopPropagation();
   }
   
   function drop(ev) {
     ev.preventDefault();
+    ev.stopPropagation();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
   }
